@@ -5,15 +5,7 @@
     padding-top: 30px
     background-color: #262D33
     position: relative
-    &::after
-        content: ''
-        background-color: #e5e5e5
-        width: 100%
-        height: 20%
-        z-index: 0
-        position: absolute
-        left: 0
-        bottom: 0
+    height: 475px
 .hero 
     display: flex
     overflow: hidden
@@ -67,14 +59,20 @@
             width: 45px
             height: 45px
             border-radius: 50%
-        .category-name
-            color: #4592FF
-            text-transform: uppercase
-            font-weight: 900
-            font-size: 12px
-            line-height: 15px
-            text-decoration: none
+           
         .post
+            &-categories
+                padding: 0
+                margin: 0
+                list-style: none
+                a
+                    color: #4592FF
+                    text-transform: uppercase
+                    font-weight: 900
+                    font-size: 12px
+                    line-height: 15px
+                    text-decoration: none
+
             &-text
                 position: relative
                 z-index: 2
@@ -85,12 +83,12 @@
                 font-family: 'Roboto Slab', serif
                 margin-top: 20px
                 margin-bottom: 50px
-            
+                max-width: 590px
+                
         .more
             display: inline-block
             color: #ffffff
-            padding: 10px 20px
-            padding-right: 50px
+            padding: 10px 50px 10px 20px
             border-radius: 20px
             background-color: #4592FF
             text-decoration: none
@@ -112,19 +110,26 @@
                 padding: 0
                 margin: 0
                 list-style: none
-        .post 
+        .post
             padding: 17px 25px 19px 25px
             margin: 0
             border-top: 1px solid #D9DADB
             min-height: 100px
+            &-categories
+                padding: 0
+                margin: 0
+                list-style: none
+                a
+                    font-weight: 900
+                    font-size: 12px
+                    line-height: 15px
+                    text-transform: uppercase
+                    text-decoration: none
+            &-permalink
+                text-decoration: none
+                color: #4b5157
             &:hover
-                background-color: #F5F5F5 
-            .category-name
-                font-weight: 900
-                font-size: 12px
-                line-height: 15px
-                text-transform: uppercase
-
+                background-color: #F5F5F5
             &-title
                 min-height: 40px
                 font-size: 14px
