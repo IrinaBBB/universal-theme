@@ -126,8 +126,8 @@ body {
   left: 0;
   right: 0;
   z-index: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .hero .left .author {
@@ -239,6 +239,50 @@ body {
   font-weight: 400;
   margin-bottom: 0;
   margin-top: 8px;
+}
+
+.article-list {
+  margin: 0;
+  margin-top: 190px;
+  padding: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  background-color: #30363D;
+  border-radius: 8px;
+}
+.article-item {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: relative;
+  width: 300px;
+  height: 90px;
+}
+.article-item:not(:last-child) {
+  border-right: 1px solid #4B5157;
+}
+.article-permalink {
+  text-decoration: none;
+  color: #FFFFFF;
+  width: 150px;
+}
+.article-permalink:visited {
+  text-decoration: none;
+  color: #FFFFFF;
+  width: 150px;
+}
+.article-permalink:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+.article-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 /*# sourceMappingURL=universal-theme.css.map */

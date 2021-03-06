@@ -9,7 +9,7 @@
 
                     $myposts = get_posts([
                         'numberposts' => 1,
-                        'category_name' => 'JavaScript'
+                        'category_name' => 'JavaScript, css, html, web-design'
                     ]);
 
                     // Проверяем, есть ли посты
@@ -29,7 +29,7 @@
                         </a>
                     <div class="post-text">
                 <?php the_category(); ?>
-                <h2 class="post-title"><?php the_title(); ?></h2>
+                <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?></h2>
                 <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
             </div>
             <?php  
@@ -52,7 +52,9 @@
 
                     $myposts = get_posts([
                         'numberposts' => 5,
-                        'offset' => 1
+                        'offset' => 1,
+                        'category_name' => 'JavaScript, css, html, web-design'
+
                     ]);
                     // Проверяем, есть ли посты
                     if ($myposts) {
@@ -63,7 +65,9 @@
                 ?>
                         <li class="post">
                                 <?php the_category(); ?>
-                                <a class="post-permalink" href="<?php echo get_the_permalink(); ?>"><h4 class="post-title"><?php the_title(); ?></h4></a>
+                                <a class="post-permalink" href="<?php echo get_the_permalink(); ?>">
+                                    <h4 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...');?></h4>
+                                </a>
                         </li>
             
                     <?php  
@@ -79,3 +83,39 @@
         </div>
     </div>
 </main>
+<div class="container">
+    <ul class="article-list">
+        <?php
+
+        // Объявляем глобальную переменную $post
+        global $post;
+
+        $myposts = get_posts([
+            'numberposts' => 4,
+            'category_name' => 'статьи'
+
+        ]);
+        // Проверяем, есть ли посты
+        if ($myposts) {
+            // Если есть, запускаем цикл
+            foreach ($myposts as $post) {
+                setup_postdata( $post );
+                ?>
+                <li class="article-item">
+                    <a class="article-permalink" href="<?php echo get_the_permalink(); ?>">
+                        <h4 class="article-title"><?php echo mb_strimwidth(get_the_title(), 0, 50, '...'); ?></h4>
+                    </a>
+                    <img width="65" height="65" src="<?php echo get_the_post_thumbnail_url(null, 'thumbnail'); ?>" alt="">
+                </li>
+
+                <?php
+            }
+        } else {
+            ?><p>Постов нет</p><?php
+        }
+
+        wp_reset_postdata();
+        ?>
+    </ul>
+</div>
+<!-- /.container -->
