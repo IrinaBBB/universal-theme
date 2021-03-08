@@ -544,6 +544,36 @@ body {
   margin-top: 30px;
 }
 
+.widget {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+.widget_tag_cloud .widget-title {
+  padding: 15px 25px;
+  border-bottom: 1px solid #d9dadb;
+  font-family: "Lato Black", sans-serif;
+  font-size: 16px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+.widget-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 25px 25px;
+  text-align: center;
+}
+.widget-social h2 {
+  padding: 0;
+  margin-top: 0;
+}
+.widget-social .widget-title {
+  flex-basis: 100%;
+  font-family: "Roboto Slab", sans-serif;
+}
+.widget-social .widget-link {
+  flex-basis: 30%;
+}
 .widget-downloader {
   background: #3bbdc4 url("../images/file.svg") no-repeat top 22px right 24px;
   -webkit-border-radius: 10px;
@@ -586,6 +616,25 @@ body {
   font-size: 14px;
   line-height: 20;
   margin: 0;
+}
+.widget .tagcloud {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 15px;
+  padding-right: 10px;
+  padding-left: 25px;
+}
+.widget .tag-cloud-link {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #d9dadb;
+  border-radius: 5px;
+  line-height: 20px;
+  color: #262d33;
 }
 
 /*# sourceMappingURL=universal-theme.css.map */
