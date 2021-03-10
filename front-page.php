@@ -96,7 +96,8 @@
 
     $myposts = get_posts([
       'numberposts' => 4,
-      'category_name' => 'статьи'
+      'category_name' => 'статьи',
+      'category__not_in' => [24, 32, 30, 27, 36]
 
     ]);
     // Проверяем, есть ли посты
@@ -138,7 +139,7 @@
       $query = new WP_Query([
         // Получаем 7 постов
         'posts_per_page' => 7,
-        'category__not_in' => 24
+        'category__not_in' => [24, 32, 30, 27, 36]
       ]);
 
       // Проверяем, есть ли посты
@@ -158,7 +159,7 @@
                 <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
                   <!--                <img class="article-grid-thumb" src="--><?php //echo get_the_post_thumbnail_url();
                   ?><!--" alt="">-->
-                  <span class="category-name">
+                  c
                                 <?php $category = get_the_category();
                                 echo $category[0]->name; ?>
                             </span>
@@ -298,7 +299,6 @@
     get_sidebar();
     ?>
   </div>
-
 </div>
 <!-- /.container -->
 <?php
@@ -333,4 +333,75 @@ if ( $query->have_posts() ) {
 
 wp_reset_postdata(); // Сбрасываем $post
 ?>
+
+
+<div class="container">
+  <section class="articles-list-bottom">
+    <div class="articles-hot">
+      <?php
+      global $post;
+
+      $query = new WP_Query( [
+        'posts_per_page' => 5,
+        'category_name' => 'статьи',
+      ]);
+
+
+      if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+          $query->the_post();
+          ?>
+            <div class="articles-hot__card">
+              <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Picture" class="articles-hot__image">
+              <div class="articles-hot__text-block">
+                <span class="category-name" style="color:<?php echo $color; ?>"><?php $category = get_the_category(); echo $category[0]->name; ?></span>
+                <h2><?php the_title(); ?></h2>
+                <p class="article-hot-excerpt">
+                  <?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...'); ?>
+                </p>
+                <div class="articles-hot__meta">
+                  <span class="date"><?php the_time('j F'); ?></span>
+                  <div class="comments">
+                    <img
+                        src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg' ?>"
+                        alt="Icon: comment"
+                        class="comments-icon">
+                    <span class="comments-counter">
+                                          <?php comments_number('0', '1', '%'); ?>
+                        </span>
+                  </div>
+                  <!-- /.comments -->
+                  <div class="likes">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/images/heart-dark.svg' ?>" alt="Icon: likes"
+                         class="likes-icon">
+                    <span class="likes-counter">
+                            <?php comments_number('0', '1', '%'); ?>
+            </span>
+                  </div>
+                  <!-- /.likes -->
+                </div>
+              </div>
+              <!-- /.text-block -->
+
+            </div>
+
+
+
+          <?php
+        }
+      } else {
+        // Постов не найдено
+      }
+
+      wp_reset_postdata(); // Сбрасываем $post
+      ?>
+    </div>
+
+
+
+    <div class="articles-recent">
+
+    </div>
+  </section>
+</div>
 
